@@ -1,10 +1,7 @@
-// src/lib/firebase.ts
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// Configuración de Firebase usando variables de entorno
-// Las variables deben empezar con EXPO_PUBLIC_ para ser accesibles en el cliente
 const firebaseConfig = {
   apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -15,7 +12,6 @@ const firebaseConfig = {
   measurementId: process.env.EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Validación de que las variables de entorno están configuradas
 if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
   throw new Error(
     "Firebase config is missing. Please check your .env file and ensure all EXPO_PUBLIC_FIREBASE_* variables are set."
