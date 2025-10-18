@@ -1,9 +1,12 @@
 import React from "react";
 import { View, ScrollView } from "react-native";
 import { Text, Button, Card, Avatar, Divider } from "react-native-paper";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../contexts/AuthContext";
+import LanguageSelector from "../components/LanguageSelector";
 
 export default function HomeScreen() {
+  const { t } = useTranslation();
   const { user, logout } = useAuth();
 
   const handleLogout = async () => {
@@ -33,7 +36,7 @@ export default function HomeScreen() {
               />
               <View className="ml-4 flex-1">
                 <Text variant="headlineSmall" className="font-bold">
-                  ¡Bienvenido! 👋
+                  {t("home.welcome")} 👋
                 </Text>
                 <Text variant="bodyMedium" className="text-gray-600 mt-1">
                   {user?.email}
@@ -52,7 +55,7 @@ export default function HomeScreen() {
             <View className="space-y-2">
               <View className="flex-row justify-between">
                 <Text variant="bodyMedium" className="text-gray-600">
-                  Proveedor:
+                  {t("home.provider")}:
                 </Text>
                 <Text variant="bodyMedium" className="font-semibold">
                   {user?.providerData[0]?.providerId === "google.com"
@@ -63,10 +66,10 @@ export default function HomeScreen() {
 
               <View className="flex-row justify-between">
                 <Text variant="bodyMedium" className="text-gray-600">
-                  Email verificado:
+                  {t("home.emailVerified")}:
                 </Text>
                 <Text variant="bodyMedium" className="font-semibold">
-                  {user?.emailVerified ? "✅ Sí" : "❌ No"}
+                  {user?.emailVerified ? `✅ ${t("home.yes")}` : `❌ ${t("home.no")}`}
                 </Text>
               </View>
 
@@ -88,7 +91,7 @@ export default function HomeScreen() {
 
         {/* Cards de features */}
         <Text variant="titleLarge" className="font-bold mb-4">
-          Tus Entrenamientos
+          {t("home.workouts")}
         </Text>
 
         <Card className="mb-4">
@@ -101,16 +104,16 @@ export default function HomeScreen() {
                 💪
               </Text>
               <Text variant="titleMedium" className="mt-4 text-center">
-                ¡Comienza tu viaje fitness!
+                {t("home.noWorkouts")}
               </Text>
               <Text
                 variant="bodyMedium"
                 className="text-gray-600 text-center mt-2"
               >
-                Aún no tienes entrenamientos registrados
+                {t("home.noWorkoutsDesc")}
               </Text>
               <Button mode="contained" className="mt-6">
-                Agregar Entrenamiento
+                {t("home.addWorkout")}
               </Button>
             </View>
           </Card.Content>
@@ -118,7 +121,7 @@ export default function HomeScreen() {
 
         {/* Estadísticas de ejemplo */}
         <Text variant="titleLarge" className="font-bold mb-4 mt-4">
-          Estadísticas
+          {t("home.statistics")}
         </Text>
 
         <View className="flex-row justify-between mb-6">
@@ -131,7 +134,7 @@ export default function HomeScreen() {
                 variant="bodySmall"
                 className="text-gray-600 text-center mt-1"
               >
-                Entrenamientos
+                {t("home.workoutsCount")}
               </Text>
             </Card.Content>
           </Card>
@@ -145,11 +148,17 @@ export default function HomeScreen() {
                 variant="bodySmall"
                 className="text-gray-600 text-center mt-1"
               >
-                Días activos
+                {t("home.activeDays")}
               </Text>
             </Card.Content>
           </Card>
         </View>
+
+        {/* Selector de idioma */}
+        <Text variant="titleLarge" className="font-bold mb-4 mt-4">
+          {t("settings.language")}
+        </Text>
+        <LanguageSelector />
 
         {/* Botón de cerrar sesión */}
         <Button
@@ -159,7 +168,7 @@ export default function HomeScreen() {
           className="mt-4"
           contentStyle={{ paddingVertical: 8 }}
         >
-          Cerrar Sesión
+          {t("auth.logout")}
         </Button>
       </View>
     </ScrollView>

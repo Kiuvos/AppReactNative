@@ -8,9 +8,11 @@ import {
   HelperText,
   Card,
 } from "react-native-paper";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function LoginScreen() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
@@ -32,17 +34,17 @@ export default function LoginScreen() {
 
     // Validaciones
     if (!email || !password) {
-      setError("Por favor completa todos los campos");
+      setError(t("auth.errors.emptyFields"));
       return;
     }
 
     if (!isValidEmail(email)) {
-      setError("Por favor ingresa un email válido");
+      setError(t("auth.errors.invalidEmail"));
       return;
     }
 
     if (password.length < 6) {
-      setError("La contraseña debe tener al menos 6 caracteres");
+      setError(t("auth.errors.weakPassword"));
       return;
     }
 
@@ -55,21 +57,21 @@ export default function LoginScreen() {
         await signUp(email, password);
       }
     } catch (error: any) {
-      // Mensajes de error en español
+      // Mensajes de error traducidos
       if (error.message.includes("auth/user-not-found")) {
-        setError("Usuario no encontrado");
+        setError(t("auth.errors.userNotFound"));
       } else if (error.message.includes("auth/wrong-password")) {
-        setError("Contraseña incorrecta");
+        setError(t("auth.errors.wrongPassword"));
       } else if (error.message.includes("auth/email-already-in-use")) {
-        setError("Este email ya está registrado");
+        setError(t("auth.errors.emailInUse"));
       } else if (error.message.includes("auth/weak-password")) {
-        setError("La contraseña es muy débil");
+        setError(t("auth.errors.weakPassword"));
       } else if (error.message.includes("auth/invalid-email")) {
-        setError("Email inválido");
+        setError(t("auth.errors.invalidEmail"));
       } else if (error.message.includes("auth/invalid-credential")) {
-        setError("Credenciales inválidas. Verifica tu email y contraseña");
+        setError(t("auth.errors.invalidCredentials"));
       } else {
-        setError(error.message || "Ocurrió un error. Intenta nuevamente.");
+        setError(t("auth.errors.generic"));
       }
     } finally {
       setLoading(false);
@@ -85,11 +87,11 @@ export default function LoginScreen() {
       await signInWithGoogle();
     } catch (error: any) {
       if (error.message.includes("popup-closed-by-user")) {
-        setError("Login cancelado");
+        setError(t("auth.errors.popupClosed"));
       } else if (error.message.includes("popup-blocked")) {
-        setError("Por favor permite popups en tu navegador");
+        setError(t("auth.errors.popupBlocked"));
       } else {
-        setError("Error al iniciar sesión con Google");
+        setError(t("auth.errors.googleError"));
       }
     } finally {
       setLoading(false);
@@ -109,12 +111,10 @@ export default function LoginScreen() {
           {/* Logo o título */}
           <View className="items-center mb-8">
             <Text variant="displaySmall" className="font-bold text-indigo-600">
-              💪 FitApp
+              💪 {t("common.appName")}
             </Text>
             <Text variant="bodyLarge" className="text-gray-600 mt-2">
-              {isLogin
-                ? "Inicia sesión para continuar"
-                : "Crea tu cuenta gratuita"}
+              {isLogin ? t("auth.loginTitle") : t("auth.registerTitle")}
             </Text>
           </View>
 
@@ -123,7 +123,7 @@ export default function LoginScreen() {
             <Card.Content>
               {/* Campo de Email */}
               <TextInput
-                label="Email"
+                label={t("auth.email")}
                 value={email}
                 onChangeText={setEmail}
                 mode="outlined"
@@ -137,7 +137,7 @@ export default function LoginScreen() {
 
               {/* Campo de Contraseña */}
               <TextInput
-                label="Contraseña"
+                label={t("auth.password")}
                 value={password}
                 onChangeText={setPassword}
                 mode="outlined"
@@ -171,7 +171,7 @@ export default function LoginScreen() {
                 className="mt-4"
                 contentStyle={{ paddingVertical: 8 }}
               >
-                {isLogin ? "Iniciar Sesión" : "Registrarse"}
+                {isLogin ? t("auth.login") : t("auth.register")}
               </Button>
 
               {/* Cambiar entre Login y Registro */}
@@ -184,15 +184,13 @@ export default function LoginScreen() {
                 disabled={loading}
                 className="mt-2"
               >
-                {isLogin
-                  ? "¿No tienes cuenta? Regístrate"
-                  : "¿Ya tienes cuenta? Inicia sesión"}
+                {isLogin ? t("auth.noAccount") : t("auth.haveAccount")}
               </Button>
 
               {/* Divider */}
               <View className="flex-row items-center my-6">
                 <Divider className="flex-1" />
-                <Text className="mx-4 text-gray-500">O continúa con</Text>
+                <Text className="mx-4 text-gray-500">{t("auth.continueWith")}</Text>
                 <Divider className="flex-1" />
               </View>
 
@@ -212,7 +210,7 @@ export default function LoginScreen() {
 
           {/* Footer */}
           <Text variant="bodySmall" className="text-center text-gray-500 mt-6">
-            Al continuar, aceptas nuestros Términos y Condiciones
+            {t("auth.termsAndConditions")}
           </Text>
         </View>
       </ScrollView>

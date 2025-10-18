@@ -1,0 +1,63 @@
+{
+  "common": {
+    "appName": "FitApp",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "confirm": "Confirm"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account? Sign up",
+    "haveAccount": "Already have an account? Login",
+    "continueWith": "Or continue with",
+    "termsAndConditions": "By continuing, you agree to our Terms and Conditions",
+    "loginTitle": "Login to continue",
+    "registerTitle": "Create your free account",
+    "errors": {
+      "emptyFields": "Please fill in all fields",
+      "invalidEmail": "Please enter a valid email",
+      "weakPassword": "Password must be at least 6 characters",
+      "userNotFound": "User not found",
+      "wrongPassword": "Wrong password",
+      "emailInUse": "This email is already registered",
+      "invalidCredentials": "Invalid credentials. Check your email and password",
+      "popupClosed": "Login canceled",
+      "popupBlocked": "Please allow popups in your browser",
+      "googleError": "Error signing in with Google",
+      "generic": "An error occurred. Please try again."
+    }
+  },
+  "home": {
+    "welcome": "Welcome!",
+    "provider": "Provider",
+    "emailVerified": "Email verified",
+    "yes": "Yes",
+    "no": "No",
+    "workouts": "Your Workouts",
+    "noWorkouts": "Start your fitness journey!",
+    "noWorkoutsDesc": "You don't have any workouts yet",
+    "addWorkout": "Add Workout",
+    "statistics": "Statistics",
+    "workoutsCount": "Workouts",
+    "activeDays": "Active days"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "notifications": "Notifications",
+    "privacy": "Privacy",
+    "about": "About"
+  }
+}

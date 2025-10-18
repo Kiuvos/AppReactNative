@@ -1,0 +1,63 @@
+{
+  "common": {
+    "appName": "FitApp",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Cerrar",
+    "confirm": "Confirmar"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "register": "Registrarse",
+    "email": "Email",
+    "password": "Contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "noAccount": "¿No tienes cuenta? Regístrate",
+    "haveAccount": "¿Ya tienes cuenta? Inicia sesión",
+    "continueWith": "O continúa con",
+    "termsAndConditions": "Al continuar, aceptas nuestros Términos y Condiciones",
+    "loginTitle": "Inicia sesión para continuar",
+    "registerTitle": "Crea tu cuenta gratuita",
+    "errors": {
+      "emptyFields": "Por favor completa todos los campos",
+      "invalidEmail": "Por favor ingresa un email válido",
+      "weakPassword": "La contraseña debe tener al menos 6 caracteres",
+      "userNotFound": "Usuario no encontrado",
+      "wrongPassword": "Contraseña incorrecta",
+      "emailInUse": "Este email ya está registrado",
+      "invalidCredentials": "Credenciales inválidas. Verifica tu email y contraseña",
+      "popupClosed": "Login cancelado",
+      "popupBlocked": "Por favor permite popups en tu navegador",
+      "googleError": "Error al iniciar sesión con Google",
+      "generic": "Ocurrió un error. Intenta nuevamente."
+    }
+  },
+  "home": {
+    "welcome": "¡Bienvenido!",
+    "provider": "Proveedor",
+    "emailVerified": "Email verificado",
+    "yes": "Sí",
+    "no": "No",
+    "workouts": "Tus Entrenamientos",
+    "noWorkouts": "¡Comienza tu viaje fitness!",
+    "noWorkoutsDesc": "Aún no tienes entrenamientos registrados",
+    "addWorkout": "Agregar Entrenamiento",
+    "statistics": "Estadísticas",
+    "workoutsCount": "Entrenamientos",
+    "activeDays": "Días activos"
+  },
+  "settings": {
+    "title": "Configuración",
+    "language": "Idioma",
+    "theme": "Tema",
+    "notifications": "Notificaciones",
+    "privacy": "Privacidad",
+    "about": "Acerca de"
+  }
+}

@@ -6,6 +6,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { AuthProvider, useAuth } from "./src/contexts/AuthContext";
 import LoginScreen from "./src/screens/LoginScreen";
 import HomeScreen from "./src/screens/HomeScreen";
+import "./src/i18n"; // Importar configuración de i18n
 import "./global.css"; // importa Tailwind CSS (NativeWind)
 
 // Componente que maneja la navegación basada en autenticación
