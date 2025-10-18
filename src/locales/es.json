@@ -35,6 +35,7 @@
       "popupClosed": "Login cancelado",
       "popupBlocked": "Por favor permite popups en tu navegador",
       "googleError": "Error al iniciar sesión con Google",
+      "googleMobileNotAvailable": "Google Sign-In solo está disponible en web por ahora",
       "generic": "Ocurrió un error. Intenta nuevamente."
     }
   },

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { Platform } from "react-native";
 import {
   User,
   createUserWithEmailAndPassword,
@@ -48,16 +49,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       setLoading(false);
     });
 
-    // Verificar si hay resultado de redirect (para Google Sign-In)
-    getRedirectResult(auth)
-      .then((result) => {
-        if (result) {
-          console.log("Usuario autenticado con Google:", result.user);
-        }
-      })
-      .catch((error) => {
-        console.error("Error con redirect de Google:", error);
-      });
+    // Verificar si hay resultado de redirect (solo en web)
+    if (Platform.OS === "web") {
+      getRedirectResult(auth)
+        .then((result) => {
+          if (result) {
+            console.log("Usuario autenticado con Google:", result.user);
+          }
+        })
+        .catch((error) => {
+          console.error("Error con redirect de Google:", error);
+        });
+    }
 
     return unsubscribe;
   }, []);
@@ -87,8 +90,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       provider.addScope("profile");
       provider.addScope("email");
 
-      // Para web usa popup, para móvil usaría redirect
-      if (typeof window !== "undefined") {
+      // Solo funciona en web por ahora
+      if (Platform.OS === "web") {
         try {
           await signInWithPopup(auth, provider);
         } catch (popupError: any) {
@@ -96,6 +99,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           console.log("Popup bloqueado, intentando con redirect...");
           await signInWithRedirect(auth, provider);
         }
+      } else {
+        // En móvil, mostrar mensaje de que no está disponible
+        throw new Error("Google Sign-In solo está disponible en web por ahora");
       }
     } catch (error: any) {
       console.error("Error en Google Sign-In:", error);

@@ -90,6 +90,9 @@ export default function LoginScreen() {
         setError(t("auth.errors.popupClosed"));
       } else if (error.message.includes("popup-blocked")) {
         setError(t("auth.errors.popupBlocked"));
+      } else if (error.message.includes("solo está disponible en web") || 
+                 error.message.includes("only available on web")) {
+        setError(t("auth.errors.googleMobileNotAvailable"));
       } else {
         setError(t("auth.errors.googleError"));
       }
@@ -190,7 +193,9 @@ export default function LoginScreen() {
               {/* Divider */}
               <View className="flex-row items-center my-6">
                 <Divider className="flex-1" />
-                <Text className="mx-4 text-gray-500">{t("auth.continueWith")}</Text>
+                <Text className="mx-4 text-gray-500">
+                  {t("auth.continueWith")}
+                </Text>
                 <Divider className="flex-1" />
               </View>
 

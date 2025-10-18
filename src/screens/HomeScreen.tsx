@@ -69,7 +69,9 @@ export default function HomeScreen() {
                   {t("home.emailVerified")}:
                 </Text>
                 <Text variant="bodyMedium" className="font-semibold">
-                  {user?.emailVerified ? `✅ ${t("home.yes")}` : `❌ ${t("home.no")}`}
+                  {user?.emailVerified
+                    ? `✅ ${t("home.yes")}`
+                    : `❌ ${t("home.no")}`}
                 </Text>
               </View>
 
